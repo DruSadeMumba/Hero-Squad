@@ -1,4 +1,4 @@
 package dao;
 
-public class SqlSquadDao implements SquadDao{
+public class SqlSquadDao {
 }
