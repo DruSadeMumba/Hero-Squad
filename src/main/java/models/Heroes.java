@@ -13,7 +13,7 @@ public class Heroes {
     private int id;
     private int squadId;
 
-    public Heroes(String name, int age, String powers, String weakness, int categoryId){
+    public Heroes(String name, int age, String powers, String weakness, int squadId){
         this.name = name;
         this.age = age;
         this.powers =powers;
