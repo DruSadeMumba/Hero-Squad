@@ -1,17 +1,12 @@
 package models;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
+import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+
 
 class HeroesTest {
 
-    @BeforeEach
-    void setUp() {
-    }
 
-    @AfterEach
-    void tearDown() {
-    }
 }
