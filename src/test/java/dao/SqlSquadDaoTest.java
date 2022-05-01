@@ -7,11 +7,5 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SqlSquadDaoTest {
 
-    @BeforeEach
-    void setUp() {
-    }
 
-    @AfterEach
-    void tearDown() {
-    }
 }
