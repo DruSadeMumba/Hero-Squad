@@ -24,11 +24,11 @@
             <div class="row">
                 {{#if squads}}
                     {{#each squads}}
-                        <li><a href="#{{id}}">{{name}}</a></li> <!--add route-->
+                        <li><a href="/heroessquad/new/{{id}}">{{name}}</a></li> <!--add route-->
                     {{/each}}
-                    <li><a href="#">Add a Squad</a></li> <!--add route-->
+                    <li><a href="/heroessquad/new">Add a Squad</a></li> <!--add route-->
                 {{else}}
-                    <li><a href="#">Add a Squad</a></li> <!--add route-->
+                    <li><a href="/heroessquad/new">Add a Squad</a></li> <!--add route-->
                 {{/if}}
             </div>
             <div class="row">
@@ -41,7 +41,6 @@
                     <p>No Heroes in this squad!</p>
                 {{/if}}
             </div>
-
         </div>
         <footer>
         <hr>

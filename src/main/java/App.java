@@ -28,6 +28,18 @@ public class App {
         get("/heroes", (request, response) -> {
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
+        get("/heroessquad/new", (req, res) -> { //working
+            return new ModelAndView(model, "heroesquad-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/heroessquad", (req, res) -> { //new
+            squadDao.addSquad(new Squad(req.queryParams("name"), req.queryParams("purpose"), Integer.parseInt(req.queryParams("maxSize"))));
+            model.put("squads", squadDao.getAllSquads());
+            model.put("heroes", heroesDao.getAll());
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+
         get("/villains", (request, response) -> {
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
@@ -40,5 +52,6 @@ public class App {
             model.put("heroes", heroesDao.getAll());
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
+
     }
 }
