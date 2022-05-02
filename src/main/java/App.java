@@ -39,7 +39,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-
         get("/villains", (request, response) -> {
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
