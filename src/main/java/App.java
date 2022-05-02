@@ -71,7 +71,16 @@ public class App {
             squadDao.update(Integer.parseInt(req.params(":id")), req.queryParams("newSquadName"), req.queryParams("newSquadCause"), Integer.parseInt(req.params("newMaxSize")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-
+        get("/heroesssquad/:squad_id/heroes/:hero_id/delete", (req, res) -> { //10
+            heroesDao.deleteById(Integer.parseInt(req.params("task_id")));
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/heroessquad/:squad_id/heroes/:hero_id", (req, res) -> { //11
+            model.put("squad", squadDao.findById(Integer.parseInt(req.params("squad_id"))));
+            model.put("hero", heroesDao.findById(Integer.parseInt(req.params("hero_id"))));
+            model.put("squads", squadDao.getAllSquads());
+            return new ModelAndView(model, "heroes-detail.hbs");
+        }, new HandlebarsTemplateEngine());
         get("/heroes/:id/edit", (req, res) -> { //12
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.findById(Integer.parseInt(req.params("id"))));
@@ -128,6 +137,16 @@ public class App {
         post("/villainssquad/:id", (req, res) -> { //9
             squadDao.update(Integer.parseInt(req.params(":id")), req.queryParams("newSquadName"), req.queryParams("newSquadCause"), Integer.parseInt(req.params("newMaxSize")));
             return new ModelAndView(model, "villains.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/villainssquad/:squad_id/villains/:hero_id/delete", (req, res) -> { //10
+            heroesDao.deleteById(Integer.parseInt(req.params("hero_id")));
+            return new ModelAndView(model, "villains.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/villainssquad/:squad_id/villains/:hero_id", (req, res) -> { //11
+            model.put("squad", squadDao.findById(Integer.parseInt(req.params("squad_id"))));
+            model.put("hero", heroesDao.findById(Integer.parseInt(req.params("hero_id"))));
+            model.put("squads", squadDao.getAllSquads());
+            return new ModelAndView(model, "villains-detail.hbs");
         }, new HandlebarsTemplateEngine());
         get("/villains/:id/edit", (req, res) -> { //12
             model.put("squads", squadDao.getAllSquads());
