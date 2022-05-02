@@ -26,6 +26,8 @@ public class App {
         get("/", (request, response) -> {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
+
         get("/heroes", (request, response) -> {
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
@@ -63,6 +65,15 @@ public class App {
             model.put("heroes", heroesDao.getAll());
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
-
+        get("/villains/new", (req, res) -> { //working
+            model.put("squads", squadDao.getAllSquads());
+            return new ModelAndView(model, "villains-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/villains", (req, res) -> { //URL to make new task on POST route
+            model.put("squads", squadDao.getAllSquads());
+            model.put("heroes", heroesDao.getAll());
+            heroesDao.add(new Heroes(req.queryParams("name"), Integer.parseInt(req.queryParams("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.queryParams("squadId"))));
+            return new ModelAndView(model, "villains.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }

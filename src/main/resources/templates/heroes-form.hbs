@@ -12,7 +12,7 @@
                     <div class="card-body">
                         {{#if editHeroes}}
                             <h1>Update Hero!</h1>
-                            <form action="/heroes/{{task.id}}" method="post">
+                            <form action="/heroes/{{heroes.id}}" method="post">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Edit Name</label>
                                     <input type="text" class="form-control" id="name" name="name" aria-describedby="NnameHelp" value="{{heroes.name}}"  required>
@@ -34,9 +34,9 @@
                                     <div id="ageHelp" class="form-text">Choose your heroes new age</div>
                                 </div><br>
                                 <div class="mb-3">
-                                    <label for="categoryId">Update this task's category:</label>
-                                    <select id="categoryId" name="categoryId">
-                                        {{#each categories}}
+                                    <label for="squadId">Change squads:</label>
+                                    <select id="squadId" name="squadId">
+                                        {{#each squad}}
                                             <option value="{{id}}">{{name}}</option>
                                         {{/each}}
                                     </select>
