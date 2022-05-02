@@ -27,52 +27,82 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-        get("/heroes", (request, response) -> {
+                //HEROES
+        get("/heroes", (request, response) -> { //1
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroessquad/new", (req, res) -> { //working
+        get("/heroessquad/new", (req, res) -> { //working 2
             return new ModelAndView(model, "heroesquad-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/heroessquad", (req, res) -> { //new
+        post("/heroessquad", (req, res) -> { //new 3
             squadDao.addSquad(new Squad(req.queryParams("name"), req.queryParams("purpose"), Integer.parseInt(req.queryParams("maxSize"))));
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.getAll());
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroes/new", (req, res) -> { //working
+        get("/heroes/new", (req, res) -> { //working 4
             model.put("squads", squadDao.getAllSquads());
             return new ModelAndView(model, "heroes-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/heroes", (req, res) -> { //URL to make new task on POST route
+        post("/heroes", (req, res) -> {  //5
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.getAll());
             heroesDao.add(new Heroes(req.queryParams("name"), Integer.parseInt(req.queryParams("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.queryParams("squadId"))));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
+        get("/heroessquad/delete", (req, res) -> {  //6
+            squadDao.clearAllSquads();
+            heroesDao.clearAllHeroes();
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/heroessquad/:id/edit", (req, res) -> { //8
+            model.put("editSquad", true);
+            model.put("squad", squadDao.findById(Integer.parseInt(req.params("id"))));
+            model.put("squads", squadDao.getAllSquads());
+            return new ModelAndView(model, "heroesquad-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/categories/:id", (req, res) -> { //9
+            squadDao.update(Integer.parseInt(req.params(":id")), req.queryParams("newSquadName"), req.queryParams("newSquadCause"), Integer.parseInt(req.params("newMaxSize")));
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
-
-        get("/villains", (request, response) -> {
+                //VILLAINS
+        get("/villains", (request, response) -> { //1
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/villainssquad/new", (req, res) -> { //working
+        get("/villainssquad/new", (req, res) -> { //2
             return new ModelAndView(model, "villainsquad-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/villainssquad", (req, res) -> { //new
+        post("/villainssquad", (req, res) -> { // 3
             squadDao.addSquad(new Squad(req.queryParams("name"), req.queryParams("purpose"), Integer.parseInt(req.queryParams("maxSize"))));
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.getAll());
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/villains/new", (req, res) -> { //working
+        get("/villains/new", (req, res) -> {  //4
             model.put("squads", squadDao.getAllSquads());
             return new ModelAndView(model, "villains-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/villains", (req, res) -> { //URL to make new task on POST route
+        post("/villains", (req, res) -> {  //5
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.getAll());
             heroesDao.add(new Heroes(req.queryParams("name"), Integer.parseInt(req.queryParams("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.queryParams("squadId"))));
+            return new ModelAndView(model, "villains.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/villainssquad/delete", (req, res) -> { //6
+            squadDao.clearAllSquads();
+            heroesDao.clearAllHeroes();
+            return new ModelAndView(model, "villains.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/villainssquad/:id/edit", (req, res) -> { //8
+            model.put("editSquad", true);
+            model.put("squad", squadDao.findById(Integer.parseInt(req.params("id"))));
+            model.put("squads", squadDao.getAllSquads());
+            return new ModelAndView(model, "villainsquad-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/categories/:id", (req, res) -> { //9
+            squadDao.update(Integer.parseInt(req.params(":id")), req.queryParams("newSquadName"), req.queryParams("newSquadCause"), Integer.parseInt(req.params("newMaxSize")));
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
     }
