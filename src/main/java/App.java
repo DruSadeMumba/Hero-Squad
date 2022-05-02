@@ -1,5 +1,6 @@
 import dao.SqlHeroesDao;
 import dao.SqlSquadDao;
+import models.Heroes;
 import models.Squad;
 import org.sql2o.Sql2o;
 import spark.ModelAndView;
@@ -37,6 +38,17 @@ public class App {
             model.put("heroes", heroesDao.getAll());
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
+        get("/heroes/new", (req, res) -> { //working
+            model.put("squads", squadDao.getAllSquads());
+            return new ModelAndView(model, "heroes-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/heroes", (req, res) -> { //URL to make new task on POST route
+            model.put("squads", squadDao.getAllSquads());
+            model.put("heroes", heroesDao.getAll());
+            heroesDao.add(new Heroes(req.queryParams("name"), Integer.parseInt(req.queryParams("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.queryParams("squadId"))));
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
 
         get("/villains", (request, response) -> {
