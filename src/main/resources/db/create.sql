@@ -1,5 +1,5 @@
 SET MODE PostgreSQL;
-DROP TABLE heroes;
+
 CREATE TABLE IF NOT EXISTS heroes (
   id int PRIMARY KEY auto_increment,
   name VARCHAR,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS heroes (
   squadsId INTEGER
   completes BOOLEAN,
 );
-DROP TABLE squads;
+
 CREATE TABLE IF NOT EXISTS squads (
   id int PRIMARY KEY auto_increment,
   name VARCHAR,

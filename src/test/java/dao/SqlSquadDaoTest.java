@@ -1,3 +1,4 @@
+/*
 package dao;
 
 import models.Heroes;
@@ -90,24 +91,24 @@ public class SqlSquadDaoTest {
         assertTrue(daoSize > 0 && daoSize > squadDao.getAllSquads().size());
     }
 
-    /*@Test
+    @Test
     public void getAllTasksByCategoryReturnsTasksCorrectly() throws Exception {
         Squad squad = setupNewSquad();
         squadDao.addSquad(squad);
         int squadId = squad.getId();
         Heroes newHeroes = new Heroes("superman",1,"laser eyes", "kryptonite" ,squadId);
-        Heroes otherHeroes = new Heroes("wonderwoman",2,"flight", "darkness" ,squadId);
-        Heroes thirdHeroes = new Heroes("batman",3,"tbd", "bats" ,squadId);
+        Heroes otherHeroes = new Heroes("superman",2,"flight", "darkness" ,squadId);
+        Heroes thirdHeroes = new Heroes("superman",3,"tbd", "bats" ,squadId);
         heroesDao.add(newHeroes);
         heroesDao.add(otherHeroes);
-        assertEquals(2, SquadDao.getAllHeroesBySquad(squadId).size());
+        assertEquals(2, squadDao.getAllHeroesBySquad(squadId).size());
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(newHeroes));
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(otherHeroes));
         assertFalse(squadDao.getAllHeroesBySquad(squadId).contains(thirdHeroes)); //things are accurate!
-    }*/
+    }
 
     public Squad setupNewSquad(){
         return new Squad("Justice League", "Crime Fighting", 7);
     }
 
-}
+}*/

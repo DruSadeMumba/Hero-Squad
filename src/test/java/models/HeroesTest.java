@@ -1,3 +1,4 @@
+/*
 package models;
 
 import org.junit.Test;
@@ -28,14 +29,16 @@ public class HeroesTest {
     @Test
     public void isCompletesPropertyIsFalseAfterInstantiation() throws Exception {
         Heroes heroes = setupNewHeroes();
-        assertEquals(false, heroes.getcompletes());
+        assertEquals(false, heroes.getCompletes());
     }
     @Test
     public void getJoinedAtInstantiatesWithCurrentTimeToday() throws Exception {
         Heroes heroes = setupNewHeroes();
         assertEquals(LocalDateTime.now().getDayOfWeek(), heroes.getJoinedAt().getDayOfWeek());
     }
+    //Heroes method
     public Heroes setupNewHeroes(){
         return new Heroes("Superman", 60, "Superstrength", "Kryptonite",  1);
     }
 }
+*/

@@ -32,11 +32,11 @@ public class Heroes {
         if (this == o) return true;
         if (!(o instanceof Heroes)) return false;
         Heroes heroes = (Heroes) o;
-        return getcompletes() == heroes.getcompletes() && getId() == heroes.getId() && Objects.equals(getPowers(), heroes.getPowers());
+        return getCompletes() == heroes.getCompletes() && getId() == heroes.getId() && Objects.equals(getPowers(), heroes.getPowers());
     }
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getAge(), getPowers(), getWeakness(),  getcompletes(), getId());
+        return Objects.hash(getName(), getAge(), getPowers(), getWeakness(),  getCompletes(), getId());
     }
     public void setPowers(String powers) {
         this.powers = powers;
@@ -66,7 +66,7 @@ public class Heroes {
         return age;
     }
     public String getName() {return name;}
-    public boolean getcompletes(){return this.completes;}
+    public boolean getCompletes(){return this.completes;}
     public LocalDateTime getJoinedAt() {return joinedAt;}
     public int getId() {
         return id;

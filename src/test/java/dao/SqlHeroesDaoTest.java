@@ -1,3 +1,4 @@
+/*
 package dao;
 
 import models.Heroes;
@@ -107,4 +108,4 @@ public class SqlHeroesDaoTest {
     public Heroes setupNewHeroes(){
         return new Heroes("",3, "","", 4);
     }
-}
+}*/
