@@ -35,7 +35,7 @@ public class App {
             return new ModelAndView(model, "heroesquad-form.hbs");
         }, new HandlebarsTemplateEngine());
         post("/heroessquad", (req, res) -> { //new 3
-            squadDao.addSquad(new Squad(req.queryParams("name"), req.queryParams("purpose"), Integer.parseInt(req.queryParams("maxSize"))));
+            squadDao.addSquad(new Squad(req.queryParams("name"), req.queryParams("cause"), Integer.parseInt(req.queryParams("maxSize"))));
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.getAll());
             return new ModelAndView(model, "heroes.hbs");

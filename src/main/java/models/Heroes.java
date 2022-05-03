@@ -1,5 +1,4 @@
 package models;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -21,6 +20,7 @@ public class Heroes {
         this.completes = false;
         this.joinedAt = LocalDateTime.now();
         this.squadId = squadId;
+
     }
     public int getSquadId() {
         return squadId;
@@ -32,7 +32,11 @@ public class Heroes {
         if (this == o) return true;
         if (!(o instanceof Heroes)) return false;
         Heroes heroes = (Heroes) o;
-        return getCompletes() == heroes.getCompletes() && getId() == heroes.getId() && Objects.equals(getPowers(), heroes.getPowers());
+        return getCompletes() == heroes.getCompletes() && getId() == heroes.getId()
+                && Objects.equals(getName(), heroes.getName())
+                && Objects.equals(getAge(), heroes.getAge())
+                && Objects.equals(getPowers(), heroes.getPowers())
+                && Objects.equals(getWeakness(), heroes.getWeakness());
     }
     @Override
     public int hashCode() {

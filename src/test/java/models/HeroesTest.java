@@ -1,7 +1,7 @@
-/*
+
 package models;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
@@ -38,7 +38,7 @@ public class HeroesTest {
     }
     //Heroes method
     public Heroes setupNewHeroes(){
-        return new Heroes("Superman", 60, "Superstrength", "Kryptonite",  1);
+        return new Heroes("Superman", 60, "Super strength", "Kryptonite",  1);
     }
 }
-*/
+

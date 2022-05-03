@@ -41,8 +41,9 @@ public class Squad {
         if (this == o) return true;
         if (!(o instanceof Squad)) return false;
         Squad squad = (Squad) o;
-        return id == squad.id &&
-                Objects.equals(name, squad.name);
+        return id == squad.id && Objects.equals(name, squad.name)
+                && Objects.equals(cause, squad.cause)
+                && Objects.equals(maxSize, squad.maxSize) ;
     }
 
     @Override

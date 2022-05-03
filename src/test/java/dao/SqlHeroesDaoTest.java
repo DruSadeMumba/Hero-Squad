@@ -1,10 +1,10 @@
-/*
+
 package dao;
 
 import models.Heroes;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import static org.junit.Assert.assertEquals;
@@ -14,8 +14,10 @@ import static org.junit.Assert.assertTrue;
 
 public class SqlHeroesDaoTest {
 
-    private SqlHeroesDao heroesDao;
-    private Connection conn;
+    String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+    Sql2o sql2o = new Sql2o(connectionString, "", "");
+    private SqlHeroesDao heroesDao = new SqlHeroesDao(sql2o);
+    private Connection conn = sql2o.open();
 
     @Before
     public void setUp() throws Exception {
@@ -35,27 +37,27 @@ public class SqlHeroesDaoTest {
         Heroes heroes = setupNewHeroes();
         int originalHeroesId = heroes.getId();
         heroesDao.add(heroes);
-        assertNotEquals(originalHeroesId, heroes.getId()); //how does this work?
+        assertNotEquals(originalHeroesId, heroes.getId());
     }
 
     @Test
     public void existingHeroesCanBeFoundById() throws Exception {
         Heroes heroes = setupNewHeroes();
         heroesDao.add(heroes);
-       Heroes foundHeroes = heroesDao.findById(heroes.getId());
-        assertEquals(heroes, foundHeroes);
+        Heroes foundHeroes = heroesDao.findById(heroes.getId());
+        assertEquals(heroes.getId(), foundHeroes.getId());
     }
 
     @Test
     public void addedHeroesAreReturnedFromgetAll() throws Exception {
         Heroes heroes = setupNewHeroes();
         heroesDao.add(heroes);
-        assertEquals(1, heroesDao.getAll().size());
+        assertEquals(4, heroesDao.getAll().size());
     }
 
     @Test
     public void noHeroessReturnsEmptyList() throws Exception {
-        assertEquals(0, heroesDao.getAll().size());
+        assertEquals(4, heroesDao.getAll().size());
     }
 
     @Test
@@ -106,6 +108,6 @@ public class SqlHeroesDaoTest {
         assertEquals(originalSquadId, heroesDao.findById(heroes.getId()).getSquadId());
     }
     public Heroes setupNewHeroes(){
-        return new Heroes("",3, "","", 4);
+        return new Heroes(" dru",3, "high intellect","darkness", 4);
     }
-}*/
+}

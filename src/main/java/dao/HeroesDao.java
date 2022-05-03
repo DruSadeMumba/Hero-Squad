@@ -2,6 +2,7 @@ package dao;
 
 import models.Heroes;
 
+
 import java.util.List;
 
 public interface HeroesDao {

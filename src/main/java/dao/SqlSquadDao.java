@@ -15,7 +15,7 @@ public class SqlSquadDao implements SquadDao{
 
     @Override
     public void addSquad(Squad squad) {
-        String sql = "INSERT INTO categories (name) VALUES (:name)";
+        String sql = "INSERT INTO squads (name, cause, maxSize) VALUES (:name, :cause, :maxSize)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
                     .bind(squad)

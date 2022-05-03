@@ -1,10 +1,7 @@
 package dao;
 
 import models.Heroes;
-import org.sql2o.Connection;
-import org.sql2o.Sql2o;
-import org.sql2o.Sql2oException;
-
+import org.sql2o.*;
 import java.util.List;
 
 public class SqlHeroesDao implements HeroesDao{
@@ -47,7 +44,7 @@ public class SqlHeroesDao implements HeroesDao{
 
     @Override
     public void update(int id, String newName, int newAge, String newPowers, String newWeakness, int newSquadId){
-        String sql = "UPDATE heroes SET (name, age, powers,weakness, squadId) = (:name, :age, :powers, :weakness, :squadId) WHERE id=:id";
+        String sql = "UPDATE heroes SET (name, age, powers, weakness, squadId) = (:name, :age, :powers, :weakness, :squadId) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("name", newName)
@@ -74,7 +71,7 @@ public class SqlHeroesDao implements HeroesDao{
         }
     }
 
-    @Override
+    @Override 
     public void clearAllHeroes() {
         String sql = "DELETE from heroes";
         try (Connection con = sql2o.open()) {

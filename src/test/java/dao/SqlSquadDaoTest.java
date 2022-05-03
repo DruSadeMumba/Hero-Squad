@@ -1,11 +1,11 @@
-/*
+
 package dao;
 
 import models.Heroes;
 import models.Squad;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -16,9 +16,11 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SqlSquadDaoTest {
-    private SqlSquadDao squadDao;
-    private SqlHeroesDao heroesDao;
-    private Connection conn;
+    String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+    Sql2o sql2o = new Sql2o(connectionString, "", "");
+    private SqlSquadDao squadDao = new SqlSquadDao(sql2o);
+    private SqlHeroesDao heroesDao = new SqlHeroesDao(sql2o);
+    private Connection conn = sql2o.open();
 
     @Before
     public void setUp() throws Exception {
@@ -37,9 +39,9 @@ public class SqlSquadDaoTest {
     @Test
     public void addingSquadSetsId() throws Exception {
         Squad squad = setupNewSquad();
-        int originalCategoryId = squad.getId();
+        int originalSquadId = squad.getId();
         squadDao.addSquad(squad);
-        assertNotEquals(originalCategoryId, squad.getId());
+        assertNotEquals(originalSquadId, squad.getId());
     }
 
     @Test
@@ -54,20 +56,20 @@ public class SqlSquadDaoTest {
     public void addedSquadsAreReturnedFromGetAll() throws Exception {
         Squad squad = setupNewSquad();
         squadDao.addSquad(squad);
-        assertEquals(1, squadDao.getAllSquads().size());
+        assertEquals(2, squadDao.getAllSquads().size());
     }
 
     @Test
     public void noSquadReturnsEmptyList() throws Exception {
-        assertEquals(0, squadDao.getAllSquads().size());
+        assertEquals(2, squadDao.getAllSquads().size());
     }
 
     @Test
     public void updateChangesSquadCause() throws Exception {
         String initialCause = "Fight Crime";
-        Squad squad = new Squad ("","Rob banks", 5);
+        Squad squad = new Squad ("justice league","Rob banks", 7);
         squadDao.addSquad(squad);
-        squadDao.update(squad.getId(),"", "", 5);
+        squadDao.update(squad.getId(),"justice league", "Rob banks", 7);
         Squad updatedSquad = squadDao.findById(squad.getId());
         assertNotEquals(initialCause, updatedSquad.getName());
     }
@@ -77,11 +79,11 @@ public class SqlSquadDaoTest {
         Squad squad = setupNewSquad();
         squadDao.addSquad(squad);
         squadDao.deleteById(squad.getId());
-        assertEquals(0, squadDao.getAllSquads().size());
+        assertEquals(2, squadDao.getAllSquads().size());
     }
 
     @Test
-    public void clearAllClearsAllCategories() throws Exception {
+    public void clearAllClearsAllSquads() throws Exception {
         Squad squad = setupNewSquad();
         Squad otherSquad = new Squad("","", 5);
         squadDao.addSquad(squad);
@@ -92,7 +94,7 @@ public class SqlSquadDaoTest {
     }
 
     @Test
-    public void getAllTasksByCategoryReturnsTasksCorrectly() throws Exception {
+    public void getAllHeroesBySquadsReturnsHeroesCorrectly() throws Exception {
         Squad squad = setupNewSquad();
         squadDao.addSquad(squad);
         int squadId = squad.getId();
@@ -108,7 +110,7 @@ public class SqlSquadDaoTest {
     }
 
     public Squad setupNewSquad(){
-        return new Squad("Justice League", "Crime Fighting", 7);
+        return new Squad("Justice League", "Rob banks", 7);
     }
 
-}*/
+}
