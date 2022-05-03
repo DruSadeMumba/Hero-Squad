@@ -101,8 +101,8 @@ public class SqlSquadDaoTest {
         Heroes newHeroes = new Heroes("superman",1,"laser eyes", "kryptonite" ,squadId);
         Heroes otherHeroes = new Heroes("superman",2,"flight", "darkness" ,squadId);
         Heroes thirdHeroes = new Heroes("superman",3,"tbd", "bats" ,squadId);
-        heroesDao.add(newHeroes);
-        heroesDao.add(otherHeroes);
+        heroesDao.addHeroes(newHeroes);
+        heroesDao.addHeroes(otherHeroes);
         assertEquals(2, squadDao.getAllHeroesBySquad(squadId).size());
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(newHeroes));
         assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(otherHeroes));

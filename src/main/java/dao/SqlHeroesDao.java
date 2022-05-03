@@ -12,7 +12,7 @@ public class SqlHeroesDao implements HeroesDao{
     }
 
     @Override
-    public void add(Heroes heroes) {
+    public void addHeroes(Heroes heroes) {
         String sql = "INSERT INTO heroes (name, age, powers, weakness, squadId) VALUES (:name, :age, :powers, :weakness, :squadId)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)

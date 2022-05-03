@@ -32,15 +32,15 @@ public class Heroes {
         if (this == o) return true;
         if (!(o instanceof Heroes)) return false;
         Heroes heroes = (Heroes) o;
-        return getCompletes() == heroes.getCompletes() && getId() == heroes.getId()
-                && Objects.equals(getName(), heroes.getName())
-                && Objects.equals(getAge(), heroes.getAge())
-                && Objects.equals(getPowers(), heroes.getPowers())
-                && Objects.equals(getWeakness(), heroes.getWeakness());
+        return getCompletes() == heroes.completes && id == heroes.id &&
+                Objects.equals(name, heroes.name) &&
+                Objects.equals(age, heroes.age) &&
+                Objects.equals(powers, heroes.powers) &&
+                Objects.equals(weakness, heroes.weakness);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getAge(), getPowers(), getWeakness(),  getCompletes(), getId());
+        return Objects.hash(name, age, powers, weakness,  completes, id);
     }
     public void setPowers(String powers) {
         this.powers = powers;

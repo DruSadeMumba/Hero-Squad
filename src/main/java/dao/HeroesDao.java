@@ -8,7 +8,7 @@ import java.util.List;
 public interface HeroesDao {
     List<Heroes> getAll();
 
-    void add(Heroes heroes);
+    void addHeroes(Heroes heroes);
 
     Heroes findById(int id);
 

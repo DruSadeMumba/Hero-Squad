@@ -25,12 +25,12 @@
             </div>
         </nav>
         <div class="container-fluid" id="landing">
-                <div class="overlay-text">
+            <div class="overlay-text">
                 <div class="row" >
                     {{#if squads}}
                         <div class="col-md-6">
                             {{#each squads}}
-                                <li><a href="/squads/new/{{id}}">{{name}}</a></li>
+                                <li><a href="/squads/{{id}}">{{name}}</a></li>
                             {{/each}}
                         </div>
                         <div class="col-md-6">
@@ -54,11 +54,11 @@
                     </details>
                 </div><br>-->
                 <p><a href="/squads/delete">Delete all squads and heroes</a></p><br>
-                <footer>
-                    <hr>
-                    <p><img src='/images/copyright.png' alt="copyright">2022 Squads</p>
-                </footer>
             </div>
         </div>
+        <footer>
+            <hr>
+            <h5><img src='/images/copyright.png' alt="copyright">2022 Squads</h5>
+        </footer>
     </body>
 </html>

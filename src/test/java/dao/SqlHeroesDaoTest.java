@@ -36,14 +36,14 @@ public class SqlHeroesDaoTest {
     public void addingHeroesSetsId() throws Exception {
         Heroes heroes = setupNewHeroes();
         int originalHeroesId = heroes.getId();
-        heroesDao.add(heroes);
+        heroesDao.addHeroes(heroes);
         assertNotEquals(originalHeroesId, heroes.getId());
     }
 
     @Test
     public void existingHeroesCanBeFoundById() throws Exception {
         Heroes heroes = setupNewHeroes();
-        heroesDao.add(heroes);
+        heroesDao.addHeroes(heroes);
         Heroes foundHeroes = heroesDao.findById(heroes.getId());
         assertEquals(heroes.getId(), foundHeroes.getId());
     }
@@ -51,7 +51,7 @@ public class SqlHeroesDaoTest {
     @Test
     public void addedHeroesAreReturnedFromgetAll() throws Exception {
         Heroes heroes = setupNewHeroes();
-        heroesDao.add(heroes);
+        heroesDao.addHeroes(heroes);
         assertEquals(4, heroesDao.getAll().size());
     }
 
@@ -64,7 +64,7 @@ public class SqlHeroesDaoTest {
     public void updateChangesHeroesPowers() throws Exception {
         String initialPowers = "speed";
         Heroes heroes = setupNewHeroes();
-        heroesDao.add(heroes);
+        heroesDao.addHeroes(heroes);
 
         heroesDao.update(heroes.getId(), "flash", 8, "flight", "water", 1);
         Heroes updatedHeroes = heroesDao.findById(heroes.getId());
@@ -74,7 +74,7 @@ public class SqlHeroesDaoTest {
     public void updateChangesHeroesWeakness() throws Exception {
         String initialWeakness = "water";
         Heroes heroes = setupNewHeroes();
-        heroesDao.add(heroes);
+        heroesDao.addHeroes(heroes);
 
         heroesDao.update(heroes.getId(), "flash", 8, "flight", "gravity", 1);
         Heroes updatedHeroes = heroesDao.findById(heroes.getId());
@@ -84,7 +84,7 @@ public class SqlHeroesDaoTest {
     @Test
     public void deleteByIdDeletesCorrectHeroes() throws Exception {
         Heroes heroes = setupNewHeroes();
-        heroesDao.add(heroes);
+        heroesDao.addHeroes(heroes);
         heroesDao.deleteById(heroes.getId());
         assertEquals(0, heroesDao.getAll().size());
     }
@@ -93,8 +93,8 @@ public class SqlHeroesDaoTest {
     public void clearAllClearsAll() throws Exception {
         Heroes heroes = setupNewHeroes();
         Heroes otherHeroes = new Heroes("", 1, "","", 2);
-        heroesDao.add(heroes);
-        heroesDao.add(otherHeroes);
+        heroesDao.addHeroes(heroes);
+        heroesDao.addHeroes(otherHeroes);
         int daoSize = heroesDao.getAll().size();
         heroesDao.clearAllHeroes();
         assertTrue(daoSize > 0 && daoSize > heroesDao.getAll().size());
@@ -104,7 +104,7 @@ public class SqlHeroesDaoTest {
     public void squadIdIsReturnedCorrectly() throws Exception {
         Heroes heroes = setupNewHeroes();
         int originalSquadId = heroes.getSquadId();
-        heroesDao.add(heroes);
+        heroesDao.addHeroes(heroes);
         assertEquals(originalSquadId, heroesDao.findById(heroes.getId()).getSquadId());
     }
     public Heroes setupNewHeroes(){

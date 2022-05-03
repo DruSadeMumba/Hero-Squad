@@ -28,6 +28,7 @@
                     <div class="col-md-12">
                         <h1>{{squad.name}}</h1>
                         <h3>Cause: {{squad.cause}}</h3>
+                        <h3>Size: {{squad.maxSize}}</h3>
                         <h3>Squad Heroes:</h3>
                         <ul>
                             {{#each heroes}}
@@ -40,21 +41,21 @@
                 </div><br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h5>Add a New Hero<a href="/heroes/new"><i class="bi bi-person-plus"></i></a></h5>
+                        <h4>Add a New Hero<a href="/heroes/new"><i class="bi bi-person-plus"></i></a></h4>
                     </div>
                     <div class="col-md-4">
-                        <h5>Edit this squad <a href="/squads/{{squad.id}}/edit"><i class="bi bi-pencil"></i></a></h5>
+                        <h4>Edit this squad <a href="/squads/{{squad.id}}/edit"><i class="bi bi-pencil"></i></a></h4>
                     </div>
                     <div class="col-md-4">
-                        <h5>DELETE this squad <a href="/squads/{{squad.id}}/delete"><i class="bi bi-trash3"></i></a></h5>
+                        <h4>DELETE this squad <a href="/squads/{{squad.id}}/delete"><i class="bi bi-trash3"></i></a></h4>
                     </div>
                 </div>
             </div>
-            <footer>
-                <hr>
-                <p><img src='/images/copyright.png' alt="copyright">2022 Squads</p>
-            </footer>
         </div>
+        <footer>
+            <hr>
+            <p><img src='/images/copyright.png' alt="copyright">2022 Squads</p>
+        </footer>
     </body>
 </html>
 
