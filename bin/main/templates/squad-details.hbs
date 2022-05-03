@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Squads!!</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">        <link href="/styles/styles.css" rel="stylesheet">
+        <link href="/styles/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light nav justify-content-end">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/landing">SQUADS</a>
+                <div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">HEROES</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid" id="squaddetails">
+            <div class="overlay-text">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{squad.name}}</h1>
+                        <h3>Cause: {{squad.cause}}</h3>
+                        <h3>Squad Heroes:</h3>
+                        <ul>
+                            {{#each heroes}}
+                                <li>
+                                    <p>{{name}} <a href="/squads/{{squad.id}}/heroes/{{id}}"><i class="bi bi-eyeglasses"></i></a></p>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Add a New Hero<a href="/heroes/new"><i class="bi bi-person-plus"></i></a></h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Edit this squad <a href="/squads/{{squad.id}}/edit"><i class="bi bi-pencil"></i></a></h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>DELETE this squad <a href="/squads/{{squad.id}}/delete"><i class="bi bi-trash3"></i></a></h5>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <hr>
+                <p><img src='/images/copyright.png' alt="copyright">2022 Squads</p>
+            </footer>
+        </div>
+    </body>
+</html>
+

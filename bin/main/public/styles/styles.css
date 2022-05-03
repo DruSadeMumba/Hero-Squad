@@ -1,3 +1,46 @@
+*  {
+  font-family: 'Sedgwick Ave Display', cursive;
+}
 h1  {
-color: blue;
+text-align: center;
+}
+img {
+  height: 100%;
+  width: 100%;
+}
+footer img {
+  height: 50px;
+  width: 50px;
+  
+}
+footer {
+text-align: center;
+}
+
+#squaddetails {
+  background-image: url(../images/harvey.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 100px;
+   padding-bottom: 100px;
+   padding-left: 50px;
+   padding-right: 50px;
+   color: white;
+   opacity: 0.8;
+
+}
+#landing {
+  background-image: url(../images/villains.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+}
+
+.overlay-text  {
+  font-size: 50px;
 }

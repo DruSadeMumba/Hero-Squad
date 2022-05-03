@@ -21,26 +21,31 @@ public class App {
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         SqlSquadDao squadDao = new SqlSquadDao(sql2o);
         SqlHeroesDao heroesDao = new SqlHeroesDao(sql2o);
-
         Map<String, Object> model = new HashMap<String, Object>();
-        get("/", (request, response) -> {
+
+        //landing
+        get("/landing", (request, response) -> {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-                //HEROES
-        get("/heroes", (request, response) -> { //1
+                //HEROES landing
+        get("/", (request, response) -> { //1
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroessquad/new", (req, res) -> { //working 2
-            return new ModelAndView(model, "heroesquad-form.hbs");
+
+        //create new squad
+        get("/squads/new", (req, res) -> { //2
+            return new ModelAndView(model, "squad-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/heroessquad", (req, res) -> { //new 3
+        post("/squads", (req, res) -> { // 3
             squadDao.addSquad(new Squad(req.queryParams("name"), req.queryParams("cause"), Integer.parseInt(req.queryParams("maxSize"))));
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.getAll());
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroes/new", (req, res) -> { //working 4
+
+        //create new hero
+        get("/heroes/new", (req, res) -> { //4
             model.put("squads", squadDao.getAllSquads());
             return new ModelAndView(model, "heroes-form.hbs");
         }, new HandlebarsTemplateEngine());
@@ -50,52 +55,71 @@ public class App {
             heroesDao.add(new Heroes(req.queryParams("name"), Integer.parseInt(req.queryParams("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.queryParams("squadId"))));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroessquad/delete", (req, res) -> {  //6
+
+        //delete all squads
+        get("/squads/delete", (req, res) -> {  //6
             squadDao.clearAllSquads();
             heroesDao.clearAllHeroes();
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroessquad/:id", (req, res) -> { //7
+
+        //delete all heroes
+        get("/heroes/delete", (req, res) -> { //*****
+            heroesDao.clearAllHeroes();
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //squad details
+        get("/squads/:id", (req, res) -> { //7
             model.put("squad", squadDao.findById(Integer.parseInt(req.params("id"))));
             model.put("heroes", squadDao.getAllHeroesBySquad(Integer.parseInt(req.params("id"))));
             model.put("squads", squadDao.getAllSquads());
-            return new ModelAndView(model, "heroesquad-detail.hbs");
+            return new ModelAndView(model, "squad-details.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroessquad/:id/edit", (req, res) -> { //8
+
+        //edit squad
+        get("/squads/:id/edit", (req, res) -> { //8
             model.put("editSquad", true);
             model.put("squad", squadDao.findById(Integer.parseInt(req.params("id"))));
             model.put("squads", squadDao.getAllSquads());
-            return new ModelAndView(model, "heroesquad-form.hbs");
+            return new ModelAndView(model, "squad-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/categories/:id", (req, res) -> { //9
+        post("/squads/:id", (req, res) -> { //9
             squadDao.update(Integer.parseInt(req.params(":id")), req.queryParams("newSquadName"), req.queryParams("newSquadCause"), Integer.parseInt(req.params("newMaxSize")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroesssquad/:squad_id/heroes/:hero_id/delete", (req, res) -> { //10
-            heroesDao.deleteById(Integer.parseInt(req.params("task_id")));
+
+        //delete heroes in squad
+        get("/squads/:squad_id/heroes/:heroes_id/delete", (req, res) -> { //10
+            heroesDao.deleteById(Integer.parseInt(req.params("heroes_id")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
-        get("/heroessquad/:squad_id/heroes/:hero_id", (req, res) -> { //11
+
+        //heroes details
+        get("/squads/:squad_id/heroes/:heroes_id", (req, res) -> { //11
             model.put("squad", squadDao.findById(Integer.parseInt(req.params("squad_id"))));
-            model.put("hero", heroesDao.findById(Integer.parseInt(req.params("hero_id"))));
+            model.put("hero", heroesDao.findById(Integer.parseInt(req.params("heroes_id"))));
             model.put("squads", squadDao.getAllSquads());
-            return new ModelAndView(model, "heroes-detail.hbs");
+            return new ModelAndView(model, "heroes-details.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //edit heroes
         get("/heroes/:id/edit", (req, res) -> { //12
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.findById(Integer.parseInt(req.params("id"))));
             model.put("editHeroes", true);
             return new ModelAndView(model, "heroes-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/heroess/:id", (req, res) -> { //13
+        post("/heroes/:id", (req, res) -> { //13
             heroesDao.update(Integer.parseInt(req.params(":id")), req.queryParams("name"), Integer.parseInt(req.params("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.params("squadId")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
 
 
-                //VILLAINS
-        get("/villains", (request, response) -> { //1
+
+                //VILLAINS future development
+        /*get("/villains", (request, response) -> { //1
             return new ModelAndView(model, "villains.hbs");
         }, new HandlebarsTemplateEngine());
         get("/villainssquad/new", (req, res) -> { //2
@@ -157,6 +181,6 @@ public class App {
         post("/villains/:id", (req, res) -> { //13
             heroesDao.update(Integer.parseInt(req.params(":id")), req.queryParams("name"), Integer.parseInt(req.params("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.params("squadId")));
             return new ModelAndView(model, "villains.hbs");
-        }, new HandlebarsTemplateEngine());
+        }, new HandlebarsTemplateEngine());*/
     }
 }

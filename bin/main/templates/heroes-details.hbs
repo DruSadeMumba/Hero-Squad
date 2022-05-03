@@ -17,48 +17,38 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">HEROES</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/squad/new">CREATE A SQUAD</a>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container-fluid" id="landing">
-                <div class="overlay-text">
-                <div class="row" >
-                    {{#if squads}}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Name: {{heroes.name}}</h1>
                         <div class="col-md-6">
-                            {{#each squads}}
-                                <li><a href="/squads/new/{{id}}">{{name}}</a></li>
-                            {{/each}}
+                            <h4>Squad: {{squad.name}}</h4>
+                            <h4>Age: {{heroes.age}}</h4>
                         </div>
                         <div class="col-md-6">
-                            {{else}}
-                            <li><a href="/squads/new">Add a Squad</a></li>
+                            <h4>Powers: {{heroes.powers}}</h4>
+                            <h4>Weakness: {{heroes.weakness}}</h4>
                         </div>
-                    {{/if}}
+                    </div>
                 </div>
-                <!--<div class="row">
-                    <h2>{{squad.name}}</h2>
-                    <h4>List of heroes</h4>
-                    <details>
-                        {{#if heroes}}
-                            {{#each heroes}}
-                                <h5>{{name}}</h5>
-                                <p><a href="/squad/{{squadId}}/heroes/{{id}}">More info...</a></p>
-                            {{/each}}
-                        {{else}}
-                            <p>No Heroes in this squad!</p>
-                        {{/if}}
-                    </details>
-                </div><br>-->
-                <p><a href="/squad/delete">delete all squads and heroes</a></p><br>
-                <footer>
-                    <hr>
-                    <p><img src='/images/copyright.png' alt="copyright">2022 Squads</p>
-                </footer>
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2><a href="/heroes/{{heroes.id}}/edit">EDIT</a><br></h2>
+                            <h2><a href="/squads/{{heroes.squadId}}/heroes/{{heroes.id}}/delete">DELETE</a></h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <footer>
+            <hr>
+            <p><img src='/images/copyright.png' alt="copyright">2022 Squads</p>
+        </footer>
     </body>
 </html>
