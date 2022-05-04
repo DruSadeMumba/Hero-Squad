@@ -29,18 +29,19 @@
             <div class="overlay-text">
                 <div class="row " >
                     {{#if squads}}
+                        <div class="col-md-1"></div>
                         <div class="col-md-6">
                             {{#each squads}}
-                                <p>{{name}}<a href="/squads/{{id}}"><i class="bi bi-eyeglasses"></i></a></p>
+                                <p>{{name}} <a href="/squads/{{id}}"><i class="bi bi-eyeglasses"></i></a></p>
                             {{/each}}
                         </div>
-                        <div class="col-md-6">
-                            {{else}}
-                            <p><a href="/squads/new"><button type="button" class="btn btn-info">Add a Squad</button></a></p>
-                        </div>
+                        <div class="col-md-5"></div>
                     {{/if}}
                 </div>
-                <p><a href="/squads/delete"><button type="button" class="btn btn-danger">Delete All </button></a></p>
+                <div class="row">
+                    <h1><a href="/squads/new"><button type="button" class="btn btn-info">Add a Squad</button></a></h1>
+                </div>
+                <!--<p><a href="/squads/delete"><button type="button" class="btn btn-danger">Delete All </button></a></p>-->
             </div>
         </div>
     </body>

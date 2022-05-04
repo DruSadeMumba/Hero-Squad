@@ -23,84 +23,88 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <div class="row">
-                <div class="card">
-                    <div class="card-body" id="heroesform">
-                        {{#if editHeroes}}
-                            <h1>Update Hero!</h1>
-                            <form action="/squads/{{squad.id}}/heroes/{{hero.id}}" method="post">
-                                <div class="mb-3">
-                                    <label for="squadId">Change squads:</label>
-                                    <select id="squadId" name="squadId">
-                                        {{#each squads}}
-                                            <option value="{{id}}">{{name}}</option>
-                                        {{/each}}
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Edit Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" value="{{hero.name}}"  required>
-                                    <div id="nameHelp" class="form-text">What is your hero new name?</div>
-                                </div><br>
-                                <div class="mb-3">
-                                    <label for="powers" class="form-label">Edit Powers</label>
-                                    <input type="text" class="form-control" id="powers" name="powers" value="{{hero.powers}}" aria-describedby="powerHelp">
-                                    <div id="powersHelp" class="form-text">What is your new super power</div>
-                                </div><br>
-                                <div class="mb-3">
-                                    <label for="weakness" class="form-label">Edit Weakness</label>
-                                    <input type="text" class="form-control" id="weakness" name="weakness" value="{{hero.weakness}}" aria-describedby="weaknessHelp">
-                                    <div id="weaknessHelp" class="form-text">What is your new weakness</div>
-                                </div><br>
-                                <div class="mb-3">
-                                    <label for="age" class="form-label">Age</label>
-                                    <input type="number" class="form-control" name="age" aria-describedby="ageHelp" value="{{hero.age}}" required>
-                                    <div id="ageHelp" class="form-text">Choose your heroes new age</div>
-                                </div><br>
-                                <p>Don't see the right squad?<a href="/squads/new">Add a new one first.</a></p>
-                                <button type="submit" class="btn btn-dark">Update</button>
-                            </form>
-                        {{else}}
-                        <h2>Add a new Hero!</h2>
-                        <form action="/heroes" method="POST">
-                            {{#if squads}}
-                                <div>
-                                <h5>Select a squad</h5>
-                                <select id="squadId" name="squadId">
-                                    {{#each squads}}
-                                        <option value="{{id}}">{{name}}</option>
-                                    {{/each}}
-                                </select>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"  required>
-                                <div id="nameHelp" class="form-text">What is your hero name?</div>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="powers" class="form-label">Powers</label>
-                                <input type="text" class="form-control" id="powers" name="powers" aria-describedby="powerHelp">
-                                <div id="powersHelp" class="form-text">What is your super power</div>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="weakness" class="form-label">Weakness</label>
-                                <input type="text" class="form-control" id="weakness" name="weakness" aria-describedby="weaknessHelp">
-                                <div id="weaknessHelp" class="form-text">What is your weakness</div>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="age" class="form-label">Age</label>
-                                <input type="number" class="form-control" name="age" aria-describedby="ageHelp" required>
-                                <div id="ageHelp" class="form-text">Choose your heroes age</div>
-                            </div><br>
+            <div class="card">
+                <div class="card-body" id="heroesform">
+                    <div class="row" >
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4" >
+                            {{#if editHeroes}}
+                                <h1 class="text-center">Update Hero!</h1>
+                                <form action="/squads/{{squad.id}}/heroes/{{hero.id}}" method="post">
+                                    <div class="mb-3 text-center">
+                                        <label for="squadId">Change squads:</label>
+                                        <select id="squadId" name="squadId">
+                                            {{#each squads}}
+                                                <option value="{{id}}">{{name}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Edit Name</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="name" name="name" aria-describedby="nameHelp" value="{{hero.name}}"  required>
+                                        <div id="nameHelp" class="form-text">What is your hero new name?</div>
+                                    </div><br>
+                                    <div class="mb-3">
+                                        <label for="powers" class="form-label">Edit Powers</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="powers" name="powers" value="{{hero.powers}}" aria-describedby="powerHelp">
+                                        <div id="powersHelp" class="form-text">What is your new super power</div>
+                                    </div><br>
+                                    <div class="mb-3">
+                                        <label for="weakness" class="form-label">Edit Weakness</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="weakness" name="weakness" value="{{hero.weakness}}" aria-describedby="weaknessHelp">
+                                        <div id="weaknessHelp" class="form-text">What is your new weakness</div>
+                                    </div><br>
+                                    <div class="mb-3">
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="number" class="form-control bg-transparent text-white" name="age" aria-describedby="ageHelp" value="{{hero.age}}" required>
+                                        <div id="ageHelp" class="form-text">Choose your heroes new age</div>
+                                    </div><br>
+                                    <p>Don't see the right squad?<a href="/squads/new">Add a new one first.</a></p>
+                                    <button type="submit" class="btn btn-dark">Update</button>
+                                </form>
+                                {{else}}
+                                <h2 class="text-center">Add a new Hero!</h2>
+                                <form action="/heroes" method="POST">
+                                    {{#if squads}}
+                                        <div class="text-center">
+                                            <h5>Select a squad</h5>
+                                            <select id="squadId" name="squadId">
+                                                {{#each squads}}
+                                                    <option value="{{id}}">{{name}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div><br>
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Name</label>
+                                            <input type="text" class="form-control bg-transparent text-white" id="name" name="name" aria-describedby="nameHelp"  required>
+                                            <div id="nameHelp" class="form-text">What is your hero name?</div>
+                                        </div><br>
+                                        <div class="mb-3">
+                                            <label for="powers" class="form-label">Powers</label>
+                                            <input type="text" class="form-control bg-transparent text-white" id="powers" name="powers" aria-describedby="powerHelp">
+                                            <div id="powersHelp" class="form-text">What is your super power</div>
+                                        </div><br>
+                                        <div class="mb-3">
+                                            <label for="weakness" class="form-label">Weakness</label>
+                                            <input type="text" class="form-control bg-transparent text-white" id="weakness" name="weakness" aria-describedby="weaknessHelp">
+                                            <div id="weaknessHelp" class="form-text">What is your weakness</div>
+                                        </div><br>
+                                        <div class="mb-3">
+                                            <label for="age" class="form-label">Age</label>
+                                            <input type="number" class="form-control bg-transparent text-white" name="age" aria-describedby="ageHelp" required>
+                                            <div id="ageHelp" class="form-text">Choose your heroes age</div>
+                                        </div><br>
 
-                            <button type="submit" class="btn btn-dark">Create New Hero!</button><br>
-                            <hr>
-                            <p>Don't see the right squad?<a href="/squads/new">Add</a> a new one first.</p>
-                            {{else}}
-                                <h3> You'll need to add a squad before you add a hero. Add one <a href="/squads/new">here.</a></h3>
+                                        <button type="submit" class="btn btn-dark">Create New Hero!</button><br>
+                                        <hr>
+                                        <p>Don't see the right squad?<a href="/squads/new">Add</a> a new one first.</p>
+                                        {{else}}
+                                            <h3> You'll need to add a squad before you add a hero. Add one <a href="/squads/new">here.</a></h3>
+                                    {{/if}}
+                                </form>
                             {{/if}}
-                        </form>
-                    {{/if}}
+                        </div>
+                        <div class="col-md-4"></div>
                     </div>
                 </div><br>
             </div>

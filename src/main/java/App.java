@@ -13,9 +13,17 @@ import static spark.Spark.*;
 import static spark.Spark.staticFileLocation;
 
 public class App {
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 2345;
+    }
     public static void main(String[] args) {
+        port(getHerokuAssignedPort());
         staticFileLocation("/public");
-        port(2345);
+        /*port(2345);*/
 
         String connectionString = "jdbc:h2:~/todolist.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");

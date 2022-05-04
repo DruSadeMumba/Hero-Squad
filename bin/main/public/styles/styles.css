@@ -16,12 +16,12 @@ footer img {
 footer {
 text-align: center;
 }
-form input  {
+/*form input  {
   background-color: transparent;
   border-radius: 15px;
   border-color: black;
   border-width: 2px;
-}
+}*/
 
 #squaddetails {
   background-image: url(../images/squads.jpg);
@@ -33,7 +33,7 @@ form input  {
    padding-right: 50px;
    color: white;
    opacity: 0.8;
-	 height: 80vh;
+	 height: 100vh;
 }
 #landing {
   background-image: url(../images/justice-league.jpg);
@@ -58,6 +58,7 @@ form input  {
   color: white;
   opacity: 0.8;
   height: 80vh;
+
 }
 
 #squadform {
@@ -70,10 +71,10 @@ background-image: url(../images/batman.jpg);
   padding-right: 50px;
   color: white;
   opacity: 0.8;
-  height: 80vh;
+	font-size: 30px;
 }
 #heroesform {
-background-image: url(../images/villains.jpg);
+background-image: url(../images/legion.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 	padding-top: 100px;
@@ -82,6 +83,7 @@ background-image: url(../images/villains.jpg);
   padding-right: 50px;
   color: white;
   opacity: 0.8;
+  font-size: 30px;
 }
 
 

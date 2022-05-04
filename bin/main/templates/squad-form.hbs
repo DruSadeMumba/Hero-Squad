@@ -22,51 +22,55 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <div class="row">
-                <div class="card">
-                    <div class="card-body" id="squadform">
-                    {{#if editSquad}}
-                        <h1>Update {{squad.name}} Squad</h1>
-                        <form action="/squads/{{squad.id}}" method="POST">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Change Squad Name</label>
-                                <input type="text" class="form-control" id="newSquadName" name="newSquadName" value="{{squad.name}}" aria-describedby="NnameHelp"  required>
-                                <div id="NnameHelp" class="form-text">What is your new squad name?</div>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="cause" class="form-label">Change Squad Cause</label>
-                                <input type="text" class="form-control" id="newSquadCause" name="newSquadCause" value="{{squad.cause}}" aria-describedby="NcauseHelp">
-                                <div id="NcauseHelp" class="form-text">What is your new cause?</div>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="maxSize" class="form-label">Change Squad Size</label>
-                                <input type="number" class="form-control" name="newMaxSize" id="newMaxSize"  min="1" max="10" value="{{squad.maxSize}}" aria-describedby="NmaxsizeHelp" required>
-                                <div id="NmaxsizeHelp" class="form-text">What is your new size?</div>
-                            </div><br>
-                            <button type="submit" class="btn btn-dark">Confirm Changes!</button>
-                        </form>
+            <div class="card">
+                <div class="card-body" id="squadform">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            {{#if editSquad}}
+                                <h1 class="text-center">Update {{squad.name}} Squad</h1>
+                                <form action="/squads/{{squad.id}}" method="POST">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Change Squad Name</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="newSquadName" name="newSquadName" value="{{squad.name}}" aria-describedby="NnameHelp"  required>
+                                        <div id="NnameHelp" class="form-text">What is your new squad name?</div>
+                                    </div><br>
+                                    <div class="mb-3">
+                                        <label for="cause" class="form-label">Change Squad Cause</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="newSquadCause" name="newSquadCause" value="{{squad.cause}}" aria-describedby="NcauseHelp">
+                                        <div id="NcauseHelp" class="form-text">What is your new cause?</div>
+                                    </div><br>
+                                    <div class="mb-3">
+                                        <label for="maxSize" class="form-label">Change Squad Size</label>
+                                        <input type="number" class="form-control bg-transparent text-white" name="newMaxSize" id="newMaxSize"  min="1" max="10" value="{{squad.maxSize}}" aria-describedby="NmaxsizeHelp" required>
+                                        <div id="NmaxsizeHelp" class="form-text">What is your new size?</div>
+                                    </div><br>
+                                    <button type="submit" class="btn btn-dark">Confirm Changes!</button>
+                                </form>
 
-                    {{else}}
-                        <h1>Add A Squad!</h1>
-                        <form action="/squads" method="POST">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Squad Name</label>
-                                <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp"  required>
-                                <div id="nameHelp" class="form-text">What is your squad name?</div>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="cause" class="form-label">Squad Cause</label>
-                                <input type="text" class="form-control" id="cause" name="cause" aria-describedby="causeHelp">
-                                <div id="causeHelp" class="form-text">What is your cause?</div>
-                            </div><br>
-                            <div class="mb-3">
-                                <label for="maxSize" class="form-label">Squad Size</label>
-                                <input type="number" class="form-control" name="maxSize" id="maxSize"  min="1" max="10" aria-describedby="maxsizeHelp" required>
-                                <div id="maxsizeHelp" class="form-text">Choose a number between 1 - 10</div>
-                            </div><br>
-                            <button type="submit" class="btn btn-dark">Create New Squad!</button>
-                        </form>
-                    {{/if}}
+                            {{else}}
+                                <h1 class="text-center">Add A Squad!</h1>
+                                <form action="/squads" method="POST">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Squad Name</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="name" name="name" aria-describedby="nameHelp"  required>
+                                        <div id="nameHelp" class="form-text">What is your squad name?</div>
+                                    </div><br>
+                                    <div class="mb-3">
+                                        <label for="cause" class="form-label">Squad Cause</label>
+                                        <input type="text" class="form-control bg-transparent text-white" id="cause" name="cause" aria-describedby="causeHelp">
+                                        <div id="causeHelp" class="form-text">What is your cause?</div>
+                                    </div><br>
+                                    <div class="mb-3">
+                                        <label for="maxSize" class="form-label">Squad Size</label>
+                                        <input type="number" class="form-control bg-transparent text-white" name="maxSize" id="maxSize"  min="1" max="10" aria-describedby="maxsizeHelp" required>
+                                        <div id="maxsizeHelp" class="form-text">Choose a number between 1 - 10</div>
+                                    </div><br>
+                                    <button type="submit" class="btn btn-dark">Create New Squad!</button>
+                                </form>
+                            {{/if}}
+                        </div>
+                        <div class="col-md-4"></div>
                     </div>
                 </div>
             </div>
