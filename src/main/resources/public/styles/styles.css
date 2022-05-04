@@ -9,16 +9,22 @@ img {
   width: 100%;
 }
 footer img {
-  height: 50px;
-  width: 50px;
-  
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
 }
 footer {
 text-align: center;
 }
+form input  {
+  background-color: transparent;
+  border-radius: 15px;
+  border-color: black;
+  border-width: 2px;
+}
 
 #squaddetails {
-  background-image: url(../images/harvey.jpg);
+  background-image: url(../images/squads.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 100px;
@@ -39,10 +45,10 @@ text-align: center;
   padding-right: 50px;
   color: white;
   opacity: 0.8;
-  height: 80vh;
+  height: 100vh;
 }
 #heroesdetails {
-  background-image: url(../images/villains.jpg);
+  background-image: url(../images/ivy.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 	padding-top: 100px;
@@ -54,9 +60,34 @@ text-align: center;
   height: 80vh;
 }
 
+#squadform {
+background-image: url(../images/batman.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+  height: 80vh;
+}
+#heroesform {
+background-image: url(../images/villains.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+}
+
+
 .overlay-text  {
   font-size: 50px;
 }
-#hdetails  {
+.hdetails  {
 	text-align: center;
 }

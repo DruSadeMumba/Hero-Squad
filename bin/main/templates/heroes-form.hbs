@@ -22,13 +22,13 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="heroesform">
                         {{#if editHeroes}}
                             <h1>Update Hero!</h1>
-                            <form action="/heroes/{{heroes.id}}" method="post">
+                            <form action="/squads/{{squad.id}}/heroes/{{hero.id}}" method="post">
                                 <div class="mb-3">
                                     <label for="squadId">Change squads:</label>
                                     <select id="squadId" name="squadId">
@@ -39,25 +39,25 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Edit Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" aria-describedby="NnameHelp" value="{{heroes.name}}"  required>
-                                    <div id="NnameHelp" class="form-text">What is your hero new name?</div>
+                                    <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" value="{{hero.name}}"  required>
+                                    <div id="nameHelp" class="form-text">What is your hero new name?</div>
                                 </div><br>
                                 <div class="mb-3">
-                                    <label for="cause" class="form-label">Edit Powers</label>
-                                    <input type="text" class="form-control" id="cause" name="cause" value="{{heroes.powers}}" aria-describedby="powerHelp">
-                                    <div id="causeHelp" class="form-text">What is your new super power</div>
+                                    <label for="powers" class="form-label">Edit Powers</label>
+                                    <input type="text" class="form-control" id="powers" name="powers" value="{{hero.powers}}" aria-describedby="powerHelp">
+                                    <div id="powersHelp" class="form-text">What is your new super power</div>
                                 </div><br>
                                 <div class="mb-3">
                                     <label for="weakness" class="form-label">Edit Weakness</label>
-                                    <input type="text" class="form-control" id="weakness" name="weakness" value="{{heroes.weakness}}" aria-describedby="weaknessHelp">
+                                    <input type="text" class="form-control" id="weakness" name="weakness" value="{{hero.weakness}}" aria-describedby="weaknessHelp">
                                     <div id="weaknessHelp" class="form-text">What is your new weakness</div>
                                 </div><br>
                                 <div class="mb-3">
-                                    <label for="maxSize" class="form-label">Age</label>
-                                    <input type="number" class="form-control" name="age" aria-describedby="ageHelp" value="{{heroes.age}}" required>
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="number" class="form-control" name="age" aria-describedby="ageHelp" value="{{hero.age}}" required>
                                     <div id="ageHelp" class="form-text">Choose your heroes new age</div>
                                 </div><br>
-                                <p>Don't see the right squad?<a href="/squad/new">Add a new one first.</a></p>
+                                <p>Don't see the right squad?<a href="/squads/new">Add a new one first.</a></p>
                                 <button type="submit" class="btn btn-dark">Update</button>
                             </form>
                         {{else}}
@@ -78,9 +78,9 @@
                                 <div id="nameHelp" class="form-text">What is your hero name?</div>
                             </div><br>
                             <div class="mb-3">
-                                <label for="cause" class="form-label">Powers</label>
-                                <input type="text" class="form-control" id="cause" name="cause" aria-describedby="powerHelp">
-                                <div id="causeHelp" class="form-text">What is your super power</div>
+                                <label for="powers" class="form-label">Powers</label>
+                                <input type="text" class="form-control" id="powers" name="powers" aria-describedby="powerHelp">
+                                <div id="powersHelp" class="form-text">What is your super power</div>
                             </div><br>
                             <div class="mb-3">
                                 <label for="weakness" class="form-label">Weakness</label>
@@ -88,7 +88,7 @@
                                 <div id="weaknessHelp" class="form-text">What is your weakness</div>
                             </div><br>
                             <div class="mb-3">
-                                <label for="maxSize" class="form-label">Age</label>
+                                <label for="age" class="form-label">Age</label>
                                 <input type="number" class="form-control" name="age" aria-describedby="ageHelp" required>
                                 <div id="ageHelp" class="form-text">Choose your heroes age</div>
                             </div><br>

@@ -21,10 +21,10 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" id="squadform">
                     {{#if editSquad}}
                         <h1>Update {{squad.name}} Squad</h1>
                         <form action="/squads/{{squad.id}}" method="POST">
@@ -47,7 +47,7 @@
                         </form>
 
                     {{else}}
-                        <h1>Add a new Heroes Squad!</h1>
+                        <h1>Add A Squad!</h1>
                         <form action="/squads" method="POST">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Squad Name</label>

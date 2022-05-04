@@ -53,6 +53,14 @@ public class App {
             model.put("squads", squadDao.getAllSquads());
             model.put("heroes", heroesDao.getAll());
             heroesDao.addHeroes(new Heroes(req.queryParams("name"), Integer.parseInt(req.queryParams("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.queryParams("squadId"))));
+
+            System.out.println(req.queryParams());
+            return new ModelAndView(model, "heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //DELETE ONE SQUAD
+        get("/squads/:squad_id/delete", (req, res) -> { //14
+            squadDao.deleteById(Integer.parseInt(req.params("squad_id")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -60,9 +68,7 @@ public class App {
         get("/squads/delete", (req, res) -> {  //6
             squadDao.clearAllSquads();
             heroesDao.clearAllHeroes();
-            res.redirect("/");
-            return null;
-            /*return new ModelAndView(model, "heroes.hbs");*/
+            return new ModelAndView(model, "/index.hbs");
         }, new HandlebarsTemplateEngine());
 
         //delete all heroes
@@ -89,20 +95,20 @@ public class App {
             return new ModelAndView(model, "squad-form.hbs");
         }, new HandlebarsTemplateEngine());
         post("/squads/:id", (req, res) -> { //9
-            squadDao.update(Integer.parseInt(req.params(":id")), req.queryParams("newSquadName"), req.queryParams("newSquadCause"), Integer.parseInt(req.params("newMaxSize")));
+            squadDao.update(Integer.parseInt(req.params(":id")), req.queryParams("newSquadName"), req.queryParams("newSquadCause"), Integer.parseInt(req.queryParams("newMaxSize")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
         //delete heroes in squad
-        get("/squads/:squad_id/heroes/:heroes_id/delete", (req, res) -> { //10
-            heroesDao.deleteById(Integer.parseInt(req.params("heroes_id")));
+        get("/squads/:squad_id/heroes/:hero_id/delete", (req, res) -> { //10
+            heroesDao.deleteById(Integer.parseInt(req.params("hero_id")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
         //heroes details
-        get("/squads/:squad_id/heroes/:heroes_id", (req, res) -> { //11
+        get("/squads/:squad_id/heroes/:hero_id", (req, res) -> { //11
             model.put("squad", squadDao.findById(Integer.parseInt(req.params("squad_id"))));
-            model.put("hero", heroesDao.findById(Integer.parseInt(req.params("heroes_id"))));
+            model.put("hero", heroesDao.findById(Integer.parseInt(req.params("hero_id"))));
             model.put("squads", squadDao.getAllSquads());
             return new ModelAndView(model, "heroes-details.hbs");
         }, new HandlebarsTemplateEngine());
@@ -114,8 +120,8 @@ public class App {
             model.put("editHeroes", true);
             return new ModelAndView(model, "heroes-form.hbs");
         }, new HandlebarsTemplateEngine());
-        post("/heroes/:id", (req, res) -> { //13
-            heroesDao.update(Integer.parseInt(req.params(":id")), req.queryParams("name"), Integer.parseInt(req.params("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.params("squadId")));
+        post("/squads/:squad_id/heroes/:id", (req, res) -> { //13
+            heroesDao.update(Integer.parseInt(req.params(":id")), req.queryParams("name"), Integer.parseInt(req.queryParams("age")), req.queryParams("powers"), req.queryParams("weakness"), Integer.parseInt(req.queryParams("squadId")));
             return new ModelAndView(model, "heroes.hbs");
         }, new HandlebarsTemplateEngine());
 

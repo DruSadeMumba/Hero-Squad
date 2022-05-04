@@ -61,7 +61,7 @@ public class SqlSquadDao implements SquadDao{
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from squads WHERE id=:id";
+        String sql = "DELETE FROM squads WHERE id=:id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -73,7 +73,7 @@ public class SqlSquadDao implements SquadDao{
 
     @Override
     public void clearAllSquads() {
-        String sql = "DELETE from squads";
+        String sql = "DELETE FROM squads";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();

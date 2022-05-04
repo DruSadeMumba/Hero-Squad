@@ -24,26 +24,30 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="card">
-                    <div class="card-body" id="heroesdetails">
-                        <h1>Name: {{heroes.name}}</h1>
-                        <div class="col-md-6">
-                            <h4>Squad: {{squad.name}}</h4>
-                            <h4>Age: {{heroes.age}}</h4>
-                        </div>
-                        <div class="col-md-6">
-                            <h4>Powers: {{heroes.powers}}</h4>
-                            <h4>Weakness: {{heroes.weakness}}</h4>
+                <div class="card" id="heroesdetails">
+                    <div class="card-body" >
+                        <div class="row" >
+                            <h1>Name: {{hero.name}}</h1>
+                            <div class="col-md-6 text-center">
+                                <h4>Squad: {{squad.name}}</h4>
+                                <h4>Age: {{hero.age}}</h4>
+                                <!--<h4>Joined Squad on: {{hero.joinedAt}} //figure this out</h4>-->
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <h4>Powers: {{hero.powers}}</h4>
+                                <h4>Weakness: {{hero.weakness}}</h4>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6" id="hdetails">
-                    <h4>EDIT<a href="/heroes/{{heroes.id}}/edit"><i class="bi bi-pencil"></i></a><br></h4>
-                </div>
-                <div class="col-md-6">
-                    <h4>DELETE<a href="/squads/{{heroes.squadId}}/heroes/{{heroes.id}}/delete"><i class="bi bi-trash3"></i></a></h4>
+                    <div class="card-body">
+                        <div class="hdetails">
+                            <h4><a href="/heroes/{{hero.id}}/edit"><button type="button" class="btn btn-warning"><i class="bi bi-pencil">Edit Hero</i></button></a></h4>
+                        </div>
+                        <div class="hdetails">
+                            <h4><a href="/squads/{{hero.squadId}}/heroes/{{hero.id}}/delete"><button type="button" class="btn btn-danger"><i class="bi bi-trash3"></i>Delete Hero</button></a></h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -40,7 +40,7 @@ public class Heroes {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, powers, weakness,  completes, id);
+        return Objects.hash(name, age, powers, weakness, joinedAt, completes, id);
     }
     public void setPowers(String powers) {
         this.powers = powers;
