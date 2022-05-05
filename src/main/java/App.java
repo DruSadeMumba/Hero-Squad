@@ -25,7 +25,7 @@ public class App {
         staticFileLocation("/public");
         /*port(2345);*/
 
-        String connectionString = "jdbc:h2:~/todolist.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+        String connectionString = "jdbc:h2:~/herosquad.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         SqlSquadDao squadDao = new SqlSquadDao(sql2o);
         SqlHeroesDao heroesDao = new SqlHeroesDao(sql2o);
