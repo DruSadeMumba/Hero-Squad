@@ -1,4 +1,5 @@
 
+
 package models;
 
 import org.junit.jupiter.api.Test;
@@ -41,4 +42,5 @@ public class HeroesTest {
         return new Heroes("Superman", 60, "Super strength", "Kryptonite",  1);
     }
 }
+
 
