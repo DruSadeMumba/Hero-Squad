@@ -1,4 +1,5 @@
 
+
 package dao;
 
 import models.Heroes;
@@ -114,3 +115,4 @@ public class SqlSquadDaoTest {
     }
 
 }
+
