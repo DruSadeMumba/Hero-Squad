@@ -1,0 +1,86 @@
+*  {
+  font-family: 'Sedgwick Ave Display', cursive;
+}
+h1  {
+text-align: center;
+}
+img {
+  height: 100%;
+  width: 100%;
+}
+footer img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+footer {
+text-align: center;
+}
+#squaddetails {
+  background-image: url(../images/squads.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 100px;
+	padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+	height: 100vh;
+}
+#landing {
+  background-image: url(../images/justice-league.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+  height: 100vh;
+}
+#heroesdetails {
+  background-image: url(../images/ivy.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+  height: 80vh;
+
+}
+
+#squadform {
+	background-image: url(../images/batman.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+	font-size: 30px;
+}
+#heroesform {
+	background-image: url(../images/legion.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+	padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  opacity: 0.8;
+  font-size: 30px;
+}
+.overlay-text  {
+  font-size: 50px;
+}
+.hdetails  {
+	text-align: center;
+}
